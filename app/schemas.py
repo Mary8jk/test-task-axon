@@ -1,12 +1,11 @@
 from datetime import datetime, date
-from typing import Optional
-
-from pydantic import BaseModel, ConfigDict
+from typing import Optional, List
+from pydantic import BaseModel, Field
 
 
 class TasksDTO(BaseModel):
-    status: bool
-    task: str
+    status: bool = Field(alias='СтатусЗакрытия')
+    task: str = Field(alias='ПредставлениеЗаданияНаСмену')
     line: str
     working_shift: str
     team: str
@@ -17,3 +16,23 @@ class TasksDTO(BaseModel):
     id_rc: str
     start_data: datetime
     end_data: datetime
+
+
+class TaskCreate(TasksDTO):
+    pass
+
+
+class TaskUpdate(TasksDTO):
+    pass
+
+
+class TaskOut(TasksDTO):
+    id: int
+
+
+class AggregateFilter(BaseModel):
+    pass
+
+
+class AggregateOut(BaseModel):
+    pass

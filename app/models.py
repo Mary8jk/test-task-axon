@@ -13,7 +13,7 @@ Base = declarative_base()
 
 
 class TaskModel(Base):
-    __tablename__ = 'Контроль заданий на выпуск продукции'
+    __tablename__ = 'СтатусЗакрытия'
     status = Column(Boolean, info={'alias_name': 'СтатусЗакрытия'})
     task = Column(String, info={'alias_name': 'ПредставлениеЗаданияНаСмену'})
     line = Column(String, info={'alias_name': 'Линия'})
