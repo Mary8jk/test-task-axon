@@ -46,7 +46,7 @@ def create_task(task: schemas.TaskCreate, db: Session = Depends(get_db)):
         db.commit()
         db.refresh(db_task)
         return db_task
-    except IntegrityError as e:
+    except IntegrityError:
         raise HTTPException(status_code=400, detail="Task creation failed")
 
 

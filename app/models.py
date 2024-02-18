@@ -13,17 +13,17 @@ Base = declarative_base()
 
 
 class TaskModel(Base):
-    __tablename__ = 'СтатусЗакрытия'
-    status = Column(Boolean, info={'alias_name': 'СтатусЗакрытия'})
-    task = Column(String, info={'alias_name': 'ПредставлениеЗаданияНаСмену'})
-    line = Column(String, info={'alias_name': 'Линия'})
-    working_shift = Column(String, info={'alias_name': 'Смена'})
-    team = Column(String, info={'alias_name': 'Бригада'})
-    batch_number = Column(Integer, primary_key=True,
-                          info={'alias_name': 'НомерПартии'})
-    batch_date = Column(Date, info={'alias_name': 'ДатаПартии'})
-    nomenclature = Column(String, info={'alias_name': 'Номенклатура'})
-    code_ekn = Column(String, info={'alias_name': 'КодЕКН'})
-    id_rc = Column(String, info={'alias_name': 'ИдентификаторРЦ'})
-    start_data = Column(DateTime, info={'alias_name': 'ДатаВремяНачалаСмены'})
-    end_data = Column(DateTime, info={'alias_name': 'ДатаВремяОкончанияСмены'})
+    __tablename__ = 'ВыпускПродукции'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    СтатусЗакрытия = Column(Boolean)
+    ПредставлениеЗаданияНаСмену = Column(String)
+    Линия = Column(String)
+    Смена = Column(String)
+    Бригада = Column(String)
+    НомерПартии = Column(Integer, primary_key=True)
+    ДатаПартии = Column(Date)
+    Номенклатура = Column(String)
+    КодЕКН = Column(String)
+    ИдентификаторРЦ = Column(String)
+    ДатаВремяНачалаСмены = Column(DateTime)
+    ДатаВремяОкончанияСмены = Column(DateTime)

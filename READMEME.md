@@ -24,7 +24,7 @@ config.set_main_option('sqlalchemy.url', str(settings.DATABASE_URL_psycopg))
 target_metadata = Base.metadata
 
 инициализируем миграции
-alembic init mugrations
+alembic init migrations
 
 alembic revision --autogenerate
 
