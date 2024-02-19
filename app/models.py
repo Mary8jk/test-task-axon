@@ -1,20 +1,15 @@
 from sqlalchemy import (Column, Integer, String,
                         Boolean, Date, DateTime)
-
+from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import UniqueConstraint
 
 Base = declarative_base()
-
-# для теста бд
-# class TaskModel(Base):
-#     __tablename__ = 'Контроль заданий на выпуск продукции'
-#     id = Column(Integer, primary_key=True)
-#     name = Column(String, info={'alias_name': 'Имя'})
-
 
 class TaskModel(Base):
     __tablename__ = 'ВыпускПродукции'
     id = Column(Integer, primary_key=True, autoincrement=True)
+    closed_at = Column(DateTime, nullable=True, default=None)
     СтатусЗакрытия = Column(Boolean)
     ПредставлениеЗаданияНаСмену = Column(String)
     Линия = Column(String)
@@ -27,3 +22,24 @@ class TaskModel(Base):
     ИдентификаторРЦ = Column(String)
     ДатаВремяНачалаСмены = Column(DateTime)
     ДатаВремяОкончанияСмены = Column(DateTime)
+
+    __table_args__ = (
+        UniqueConstraint(НомерПартии, ДатаПартии),
+    )
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        if self.СтатусЗакрытия:
+            self.closed_at = datetime.now()
+        else:
+            self.closed_at = None
+
+
+class ProductModel(Base):
+    __tablename__ = 'Продукция'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    УникальныйКодПродукта = Column(String, unique=True)
+    НомерПартии = Column(Integer)
+    ДатаПартии = Column(Date)
+    is_aggregated = Column(Boolean, default=False)
+    aggregated_at = Column(DateTime, nullable=True)

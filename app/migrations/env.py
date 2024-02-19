@@ -7,10 +7,11 @@ from alembic import context
 from config import settings
 from models import TaskModel
 from database import Base
+config = context.config
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
-config = context.config
+
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
