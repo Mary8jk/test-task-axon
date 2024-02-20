@@ -103,6 +103,10 @@ alembic upgrade head
 uvicorn main:app --reload
 ```
 
+Документация: <http://127.0.0.1:8000/docs#/>
+Redoc: <http://127.0.0.1:8000/redoc>
+
+
 ## В ходе разработки реализовано: ##
 - Эндпойнт добавления сменных заданий: "/tasks/"
 ![1-1](images/1-1.png)
